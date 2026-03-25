@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 80px;
+}
+
+/* KRUG */
+.circle {
+  width: 70px;
+  height: 70px;
+  background: #fce7f3;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 💡 LAMPICA (žuti glow kao prava) */
+@keyframes bulbGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0px #facc15);
+    color: #ec4899;
+  }
+  50% {
+    filter: drop-shadow(0 0 12px #facc15) drop-shadow(0 0 25px #fde047);
+    color: #facc15;
+  }
+}
+
+.bulb-icon {
+  animation: bulbGlow 6s infinite;
+}
+
+/* ➡️ STRELICA */
+@keyframes arrowMove {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+}
+
+/* 👩 SCALE */
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.2);
+  }
+  40% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 🎉 KONFETE */
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0) translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2) translateY(-6px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) translateY(-12px);
+  }
+}
+
+/* TAČAN FLOW (6s loop, ništa se ne preklapa) */
+
+/* lampica 0–1s */
+.step1 .bulb-icon {
+  animation: bulbGlow 6s infinite;
+}
+
+/* strelica 1–2s */
+.arrow1 {
+  animation: arrowMove 6s infinite;
+  animation-delay: 1s;
+}
+
+/* drugi korak 2–3s */
+.step2 {
+  animation: scaleUp 6s infinite;
+  animation-delay: 2s;
+}
+
+/* druga strelica 3–4s */
+.arrow2 {
+  animation: arrowMove 6s infinite;
+  animation-delay: 3s;
+}
+
+/* konfete 4–5s */
+.confetti {
+  position: absolute;
+  opacity: 0;
+}
+
+.confetti1 {
+  top: -15px;
+  right: -15px;
+  animation: pop 6s infinite;
+  animation-delay: 4s;
+}
+
+.confetti2 {
+  bottom: -15px;
+  left: -15px;
+  animation: pop 6s infinite;
+  animation-delay: 4.2s;
+}
